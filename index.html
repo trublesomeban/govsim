@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Symulator projektów rządowych</title>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="title-text center"><span class="rbl">Symulator projektów rządowych</span></div>
+        <div class="rank center" id="rank">Tekst zastępczy</div>
+        <button class="center-button" onclick="upgrade()">Ulepsz <img class="icon" src="assets/up.png"></button><br>
+        <button class="center-button" onclick="downgrade()">Zapewnij fundusze <img class="icon"
+                src="assets/kasa.png"></button>
+        <div id="nep"></div><br>
+        <button class="center-button" onclick="build()">Buduj kondensator strumienia <img class="icon"
+                src="assets/build-icon-construction-150551210.webp"></button>
+        <div id="flux"></div>
+        <div class="container">
+            <img class="bud" src="assets/budowniczy.jpg">
+            <div class="centered">Jesteśmy ekipą profesjonalnych kontraktorów budownlańców.<br>Możemy wykonać stronę
+                lepszą
+                od obiadku u babunii (i równie zbloatowaną),<br> albo wszystko sp**rdolić i kazać Juniorowi sklecić na
+                szybko
+                jakieś gówno w PHPie.<br>Decyzja należy do ciebie!<br>
+                <a class="link" href="https://www.youtube.com/watch?v=xvFZjo5PgG0">Więcej o nas</a>
+            </div>
+
+        </div>
+    </div>
+    <footer>Strona pod Patronatem IDzD</footer>
+    <script>
+        let level = 0;
+        const levels = ["Na wskroś przeciętna", "Ulepszona", "Wyśmienita", "Wyśmienitsza", "Niezmiernie wyśmienita", "Wyborna", "Mistrzowska", "Arcymistrzowska", "Boska"]
+        const antilevels = ["Nienajgorsza", "Niezadowalająca", "Słaba", "Słabsza", "Kiczowa", "Okropna", "Okropniejsza", "Najokropniejsza", "Nadzwyczaj odrażająca", "Sp**rdolona", "Nadzwyczaj sp**rdolona", "Napisana w jezyku PHP"]
+        let timeline = []
+        let year = 1
+        const rank = document.getElementById("rank");
+        const build = () => {
+            const cap = document.getElementById("flux")
+            cap.innerHTML = `<input type="range" min="0" max="${timeline.length}" value="${timeline.length}" class="slider" id="range"><br><div class="ydisp">Rok: <span id="year">${timeline.length}</span></div><br><img src="assets/fcap.webp" class="fcap">`
+            const slider = document.getElementById("range")
+            slider.oninput = function () {
+                let level = timeline[this.value]
+                const rname = level < 0 ? antilevels[-level - 1] : levels[level];
+                rank.innerHTML = `<span class="rbl" style="font-size:${2.5 + level / 10}rem;">${rname} strona HTML</span>`
+                document.getElementById("year").innerHTML = `${2000+parseInt(this.value)} p.n.e (po naszej erze)`
+                if (level < 0) {
+                    document.getElementById("nep").innerHTML = `<span style="font-size:${0.5 - level / 10}rem">Nepotyzm robi brr${'r'.repeat(-level)}</span><br><img src="assets/nep.jpg" style="width: ${-level * 2}rem"><br>`
+                }
+            }
+        }
+
+        const upgrade = () => { level++; grade() }
+        const downgrade = () => { level--; grade() }
+        const grade = () => {
+            const rname = level < 0 ? antilevels[-level - 1] : levels[level];
+            if (rname != undefined) {
+                timeline.push(level)
+                rank.innerHTML = `<span class="rbl" style="font-size:${2.5 + level / 10}rem;">${rname} strona HTML</span>`
+                if (level < 0) {
+                    document.getElementById("nep").innerHTML = `<span style="font-size:${0.5 - level / 10}rem">Nepotyzm robi b${'r'.repeat(Math.pow(2, -level))}</span><br><img src="assets/nep.jpg" style="width: ${-level * 2}rem"><br>`
+                }
+            }
+
+        }
+        grade()
+    </script>
+</body>
+
+</html>

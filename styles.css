@@ -1,0 +1,142 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    align-items: center;
+}
+
+.bg {
+    background-image: url("assets/gór.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 150%;
+}
+
+.ydisp {
+    font-size: 2.5rem;
+    color: rgb(70, 70, 175);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nep {
+    width: 10rem;
+}
+
+.bud {
+    width: 40%;
+    opacity: 0.65;
+}
+
+.center-button {
+    justify-self: center;
+}
+
+.icon {
+    width: 3rem;
+}
+
+.link {
+    text-decoration: none;
+    color: royalblue;
+    font-weight: bold;
+}
+
+.rbl {
+    background-color: beige;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+.centered {
+    padding: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: beige;
+    border-radius: 0.4rem;
+    border-width: 10px;
+    border-color: darkblue;
+}
+
+footer {
+    padding: 10px;
+    font-size: 2rem;
+    color: rgb(180, 180, 226);
+    text-align: center;
+    background-color: darkblue;
+}
+
+.rank {
+    font-size: 2.5rem;
+    color: rgb(70, 70, 175);
+}
+
+.main-text {
+    font-size: 2.5rem;
+    color: rgb(70, 70, 175);
+}
+
+.title-text {
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgb(70, 70, 175);
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+button {
+    background: #7C7C7C;
+    border-bottom: 6px inset rgba(0, 0, 0, .5);
+    border-left: 6px inset rgba(0, 0, 0, .5);
+    border-right: 6px inset rgba(255, 255, 255, .5);
+    border-top: 6px inset rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2.2rem;
+    margin: 1rem;
+    min-width: 200px;
+    padding: .5rem;
+    text-transform: uppercase;
+    width: auto;
+
+    &:focus,
+    &:hover {
+        background: #BCBCBC;
+    }
+}
+
+.btn.primary {
+    background: #881400;
+
+    &:focus,
+    &:hover {
+        background: #A81000;
+    }
+}
+
+.btn.secondary {
+    background: #005800;
+
+    &:focus,
+    &:hover {
+        background: #006800;
+    }
+}
+
+.btn.tertiary {
+    background: #0000BC;
+
+    &:focus,
+    &:hover {
+        background: #0000FC;
+    }
+}

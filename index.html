@@ -10,7 +10,7 @@
     <div class="bg">
         <div class="title-text center"><span class="rbl">Symulator projektów rządowych</span></div>
         <div class="rank center" id="rank">Tekst zastępczy</div>
-        <button class="center-button" onclick="upgrade()">Ulepsz <img class="icon" src="assets/up.png"></button><br>
+        <button class="center-button" onclick="upgrade()">Pracuj <img class="icon" src="assets/up.png"></button>
         <button class="center-button" onclick="downgrade()">Zapewnij fundusze <img class="icon"
                 src="assets/kasa.png"></button>
         <div id="nep"></div><br>
@@ -18,8 +18,9 @@
                 src="assets/build-icon-construction-150551210.webp"></button>
         <div id="flux"></div>
         <div class="container">
+            <div class="title-text"><span class="rbl">Kim są twórcy?</span></div>
             <img class="bud" src="assets/budowniczy.jpg">
-            <div class="centered">Jesteśmy ekipą profesjonalnych kontraktorów budownlańców.<br>Możemy wykonać stronę
+            <div class="centered">Jesteśmy ekipą profesjonalnych kontraktorów budownlańców i zapalonych amatorów... sadzenia marchwii.<br>Możemy wykonać stronę
                 lepszą
                 od obiadku u babunii (i równie zbloatowaną),<br> albo wszystko sp**rdolić i kazać Juniorowi sklecić na
                 szybko
@@ -45,11 +46,12 @@
                 let level = timeline[this.value]
                 const rname = level < 0 ? antilevels[-level - 1] : levels[level];
                 rank.innerHTML = `<span class="rbl" style="font-size:${2.5 + level / 10}rem;">${rname} strona HTML</span>`
-                document.getElementById("year").innerHTML = `${2000+parseInt(this.value)} p.n.e (po naszej erze)`
+                document.getElementById("year").innerHTML = `${2000 + parseInt(this.value)} p.n.e (po naszej erze)`
                 if (level < 0) {
                     document.getElementById("nep").innerHTML = `<span style="font-size:${0.5 - level / 10}rem">Nepotyzm robi brr${'r'.repeat(-level)}</span><br><img src="assets/nep.jpg" style="width: ${-level * 2}rem"><br>`
                 }
             }
+            document.getElementById("year").innerHTML = `${2000 + timeline.length} p.n.e (po naszej erze)`
         }
 
         const upgrade = () => { level++; grade() }
@@ -59,6 +61,8 @@
             if (rname != undefined) {
                 timeline.push(level)
                 rank.innerHTML = `<span class="rbl" style="font-size:${2.5 + level / 10}rem;">${rname} strona HTML</span>`
+                const year = document.getElementById("year")
+                if (year) { year.innerHTML = `${2000 + timeline.length} p.n.e (po naszej erze)` }
                 if (level < 0) {
                     document.getElementById("nep").innerHTML = `<span style="font-size:${0.5 - level / 10}rem">Nepotyzm robi b${'r'.repeat(Math.pow(2, -level))}</span><br><img src="assets/nep.jpg" style="width: ${-level * 2}rem"><br>`
                 }

@@ -38,6 +38,15 @@
         let timeline = []
         let year = 1
         const rank = document.getElementById("rank");
+
+        const clamp = (num, min, max) => {
+            return num <= min 
+                ? min 
+                : num >= max 
+                    ? max 
+                    : num;
+        };
+
         const build = () => {
             const cap = document.getElementById("flux")
             cap.innerHTML = `<input type="range" min="0" max="${timeline.length}" value="${timeline.length}" class="slider" id="range"><br><div class="ydisp">Rok: <span id="year">${timeline.length}</span></div><br><img src="assets/fcap.webp" class="fcap">`
@@ -57,6 +66,7 @@
         const upgrade = () => { level++; grade() }
         const downgrade = () => { level--; grade() }
         const grade = () => {
+            level = clamp(level, -antilevels.length, levels.length - 1);
             const rname = level < 0 ? antilevels[-level - 1] : levels[level];
             if (rname != undefined) {
                 timeline.push(level)
